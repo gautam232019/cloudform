@@ -3,6 +3,7 @@ InstanceType: t2.micro
 MaxCount: 1
 MinCount: 1
 TagSpecifications:
-  - Tags:
-    - Key: Name
-      Value: Ec2Gautam
+  - ResourceType: Instance
+    Tags:
+      - Key: Name
+        Value: Ec2Gautam
