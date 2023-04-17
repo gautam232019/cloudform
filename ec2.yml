@@ -6,4 +6,4 @@ TagSpecifications:
   - ResourceType: instance
     Tags:
       - Key: Name
-        Value: Ec2Gautam
+        Value: ec2gautam
