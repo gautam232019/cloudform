@@ -10,7 +10,7 @@ pipeline {
                         '''
                 }
             }
-        },
+        }
         //gautam
         stage('Deploy CloudFormation Stack in second aws account') {
             steps {
