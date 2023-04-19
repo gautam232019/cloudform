@@ -9,7 +9,7 @@ with open('ec2.yml','r') as e:
     if(os.environ['InstanceType']):
         mydata2["InstanceType"] = os.environ['InstanceType']
     if(os.environ['InstanceName']):
-        mydata2["Value"] = os.environ['InstanceName']
+        mydata2["TagSpecifications"]["Tags"]["Value"] = os.environ['InstanceName']
 
 with open("ec2.yml", "w") as f:
     yaml.dump(mydata2, f)
