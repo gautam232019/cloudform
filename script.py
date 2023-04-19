@@ -5,7 +5,7 @@ import os
 myclient = boto3.client('s3')
 
 with open('cf.yml','r') as f:
-    mydata = yaml.safe_load(f,Loader=yaml.FullLoader)
+    mydata = yaml.safe_load(f)
 
 bucket_name = os.environ['BucketName']
 awsregion = os.environ['AwsRegionBucket']

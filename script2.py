@@ -5,7 +5,7 @@ import os
 myclient2 = boto3.client('ec2','us-east-2')
 
 with open('ec2.yml','r') as e:
-    mydata2 = yaml.safe_load(e,Loader=yaml.FullLoader)
+    mydata2 = yaml.safe_load(e)
     if(os.environ['InstanceType']):
         mydata2["InstanceType"] = os.environ['InstanceType']
     if(os.environ['InstanceName']):
