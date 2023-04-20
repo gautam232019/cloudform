@@ -16,7 +16,7 @@ response = cf_client.create_stack(
     Parameters=[
         {
             'ParameterKey': key,
-            'ParameterValue': os.environ['key']
+            'ParameterValue': os.environ[key]
         }
         for key in parameters.items()
     ]

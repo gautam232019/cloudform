@@ -13,9 +13,9 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-05502a22127df2492
-      InstanceType: !Ref InstanceType
+      InstanceType: !Fn Ref InstanceType
       Tags:
         - Key: Name
-          Value: !Ref InstanceName
+          Value: !Fn Ref InstanceName
 
   
