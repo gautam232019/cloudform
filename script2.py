@@ -4,11 +4,11 @@ import os
 
 # Create a CloudFormation client
 cf_client = boto3.client('cloudformation',region_name='us-east-2')
-
+template_body = open('ec2.yml', 'r').read()
 # Create the stack
 response = cf_client.create_stack(
     StackName='EC2inaccount2',
-    TemplateBody='file://ec2.yaml',
+    TemplateBody=template_body,
     Parameters=[
         {
             'ParameterKey': 'InstanceName',

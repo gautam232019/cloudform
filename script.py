@@ -4,11 +4,11 @@ import os
 
 # Create a CloudFormation client
 cf_client = boto3.client('cloudformation',region_name='us-east-2')
-
+template_body = open('cf.yml', 'r').read()
 # Create the stack
 response = cf_client.create_stack(
     StackName='S3inaccount1',
-    TemplateBody='file://cf.yml',
+    TemplateBody=template_body,
     Parameters=[
         {
             'ParameterKey': 'BucketName',
