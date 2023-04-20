@@ -21,6 +21,10 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref InstanceName
+  IamUser:
+    Type: AWS::IAM::User
+    Properties: 
+      UserName: Gautam
 
   IamPolicy:
     Type: AWS::IAM::Policy
@@ -32,3 +36,5 @@ Resources:
           - Effect: Allow
             Action: 'sts:AssumeRole'
             Resource: '*'
+      Users:
+       - !Ref IamUser
