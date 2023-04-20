@@ -3,7 +3,7 @@ import yaml
 import os
 
 # Create a CloudFormation client
-cf_client = boto3.client('cloudformation')
+cf_client = boto3.client('cloudformation',region_name='us-east-2')
 
 # Create the stack
 response = cf_client.create_stack(
