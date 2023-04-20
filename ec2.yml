@@ -24,7 +24,7 @@ Resources:
   IamUser:
     Type: AWS::IAM::User
     Properties: 
-      UserName: Gautam
+      UserName: GautamSachdevaWatchguard
 
   IamPolicy:
     Type: AWS::IAM::Policy
