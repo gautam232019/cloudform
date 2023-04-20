@@ -10,7 +10,7 @@ Parameters:
  InstanceName:
   Description: EC2 INSTANCE NAME
   Type: String
-    
+  
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
@@ -21,4 +21,13 @@ Resources:
         - Key: Name
           Value: !Ref InstanceName
 
-  
+  IamPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: UserPolicy
+      PolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: 'sts:AssumeRole'
+            Resource: !ImportValue MyIamRoleArn
