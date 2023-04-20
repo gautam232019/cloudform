@@ -17,6 +17,27 @@ myclient.create_bucket(Bucket=bucket_name,CreateBucketConfiguration={'LocationCo
 
 
 
+policy = '''{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "arn:aws:iam::268819417241:role/accessS3UsingEc2",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl" 
+            ],
+            "Resource": [
+                "arn:aws:s3:::%s/*"
+            ]
+        }
+    ]
+}''' % bucket_name
+
+myclient.put_bucket_policy(Bucket=bucket_name, Policy=policy)
+
+
 
 
 
