@@ -1,10 +1,12 @@
 ---
+AWSTemplateFormatVersion: '2010-09-09'
+
 Parameters:
  InstanceType:
   Type: String
   Default: t2.micro
   Description: Enter Type Of Instance-
- InsanceName:
+ InstanceName:
   Description: EC2 INSTANCE NAME
   Type: String
     

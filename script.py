@@ -7,7 +7,7 @@ cf_client = boto3.client('cloudformation',region_name='us-east-2')
 
 # Create the stack
 response = cf_client.create_stack(
-    StackName='S3inaccount_1',
+    StackName='S3inaccount1',
     TemplateBody='file://cf.yml',
     Parameters=[
         {
