@@ -1,11 +1,12 @@
 ---
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 
 Parameters:
  InstanceType:
   Type: String
   Default: t2.micro
   Description: Enter Type Of Instance-
+
  InstanceName:
   Description: EC2 INSTANCE NAME
   Type: String
@@ -15,9 +16,9 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-05502a22127df2492
-      InstanceType: !Ref InstanceType
+      InstanceType: !Fn Ref InstanceType
       Tags:
         - Key: Name
-          Value: !Ref InstanceName
+          Value: !Fn Ref InstanceName
 
   
