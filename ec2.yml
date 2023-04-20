@@ -1,9 +1,21 @@
-ImageId: ami-0103f211a154d64a6
-InstanceType: t2.micro
-MaxCount: 1
-MinCount: 1
-TagSpecifications:
-  - ResourceType: instance
-    Tags:
-      - Key: Name
-        Value: ec2gautam
+---
+Parameters:
+ InstanceType:
+  Type: String
+  Default: t2.micro
+  Description: Enter Type Of Instance-
+ InsanceName:
+  Description: S3 Bucket Name
+  Type: String
+    
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-05502a22127df2492
+      InstanceType: !Ref InstanceType
+      Tags:
+        - Key: Name
+          Value: !Ref InstanceName
+
+  

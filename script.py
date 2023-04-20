@@ -2,44 +2,23 @@ import boto3
 import yaml
 import os
 
-myclient = boto3.client('s3')
+# Load the parameters from the YAML file
+with open('cf.yml', 'r') as f:
+    parameters = yaml.safe_load(f)['Parameters']
 
-with open('cf.yml','r') as f:
-    mydata = yaml.safe_load(f)
+# Create a CloudFormation client
+cf_client = boto3.client('cloudformation')
 
-bucket_name = os.environ['BucketName']
-awsregion = os.environ['AwsRegionBucket']
-if(bucket_name == None):
-    bucket_name = mydata['BucketName']
-
-# location = config.get('Location','us-east-2')
-myclient.create_bucket(Bucket=bucket_name,CreateBucketConfiguration={'LocationConstraint':awsregion},)
-
-
-
-policy = '''{
-    "Version": "2012-10-17",
-    "Statement": [
+# Create the stack
+response = cf_client.create_stack(
+    StackName='S3_in_account_1',
+    TemplateBody='file://cf.yml',
+    Parameters=[
         {
-            "Effect": "Allow",
-            "Principal": "arn:aws:iam::268819417241:role/accessS3UsingEc2",
-            "Action": [
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:PutObjectAcl" 
-            ],
-            "Resource": [
-                "arn:aws:s3:::%s/*"
-            ]
+            'ParameterKey': key,
+            'ParameterValue': os.environ['key']
         }
+        for key in parameters.items()
     ]
-}''' % bucket_name
-
-myclient.put_bucket_policy(Bucket=bucket_name, Policy=policy)
-
-
-
-
-
-
+)
 
