@@ -19,7 +19,7 @@ response = cf_client.create_stack(
             'ParameterValue': os.environ['InstanceType']
         }
     ],
-    Capabilities=['CAPABILITY_IAM','CAPABILITY_AUTO_EXPAND']
+    Capabilities=['CAPABILITY_IAM','CAPABILITY_AUTO_EXPAND','CAPABILITY_NAMED_IAM']
 )
 
 print(response)
