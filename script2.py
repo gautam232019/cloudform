@@ -3,7 +3,7 @@ import yaml
 import os
 
 # Load the parameters from the YAML file
-with open('ec2.yaml', 'r') as f:
+with open('ec2.yml', 'r') as f:
     parameters = yaml.safe_load(f)['Parameters']
 
 # Create a CloudFormation client
