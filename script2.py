@@ -18,7 +18,8 @@ response = cf_client.create_stack(
             'ParameterKey': 'InstanceType',
             'ParameterValue': os.environ['InstanceType']
         }
-    ]
+    ],
+    Capabilities=['CAPABILITY_IAM']
 )
 
 print(response)
