@@ -12,11 +12,11 @@ response = cf_client.create_stack(
     Parameters=[
         {
             'ParameterKey': 'InstanceName',
-            'ParameterValue': os.environ['InstanceType']
+            'ParameterValue': os.environ['InstanceName']
         },
         {
             'ParameterKey': 'InstanceType',
-            'ParameterValue': os.environ['InstanceName']
+            'ParameterValue': os.environ['InstanceType']
         }
     ]
 )

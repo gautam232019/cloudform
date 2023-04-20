@@ -7,9 +7,9 @@ Parameters:
   Type: String
 
 Resources:
-  S3Bucket:
-    Type: AWS::S3::Bucket
-    Description: Creating Amazon S3 bucket from CloudFormation
-    Properties:
-      BucketName: !Ref BucketName
+ S3Bucket:
+  Type: AWS::S3::Bucket
+  Description: Creating Amazon S3 bucket from CloudFormation
+  Properties:
+    BucketName: !Ref BucketName
       
