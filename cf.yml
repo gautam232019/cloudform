@@ -45,10 +45,4 @@ Resources:
             Service:
               AWS: arn:aws:iam::268819417241:root
           Action: sts:AssumeRole
-  
- MyIamRoleArn:
-  Type: AWS::CloudFormation::Export
-  Properties:
-    Name: MyIamRoleArn
-    Value: !GetAtt IamRole.Arn
       

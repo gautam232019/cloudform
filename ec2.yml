@@ -31,4 +31,4 @@ Resources:
         Statement:
           - Effect: Allow
             Action: 'sts:AssumeRole'
-            Resource: !ImportValue MyIamRoleArn
+            Resource: '*'
