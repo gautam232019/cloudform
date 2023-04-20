@@ -2,10 +2,6 @@ import boto3
 import yaml
 import os
 
-# Load the parameters from the YAML file
-with open('ec2.yml', 'r') as f:
-    parameters = yaml.safe_load(f)['Parameters']
-
 # Create a CloudFormation client
 cf_client = boto3.client('cloudformation')
 
@@ -15,10 +11,13 @@ response = cf_client.create_stack(
     TemplateBody='file://ec2.yaml',
     Parameters=[
         {
-            'ParameterKey': key,
-            'ParameterValue': os.environ[key]
+            'ParameterKey': 'InstanceName',
+            'ParameterValue': os.environ['InstanceType']
+        },
+        {
+            'ParameterKey': 'InstanceType',
+            'ParameterValue': os.environ['InstanceName']
         }
-        for key, value in parameters.items()
     ]
 )
 

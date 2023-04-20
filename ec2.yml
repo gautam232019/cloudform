@@ -5,7 +5,7 @@ Parameters:
   Default: t2.micro
   Description: Enter Type Of Instance-
  InsanceName:
-  Description: S3 Bucket Name
+  Description: EC2 INSTANCE NAME
   Type: String
     
 Resources:
@@ -13,9 +13,9 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-05502a22127df2492
-      InstanceType: !Fn Ref InstanceType
+      InstanceType: !Ref InstanceType
       Tags:
         - Key: Name
-          Value: !Fn Ref InstanceName
+          Value: !Ref InstanceName
 
   

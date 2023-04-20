@@ -9,4 +9,4 @@ Resources:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:
-      BucketName: !Fn Ref BucketName
+      BucketName: !Ref BucketName
