@@ -43,6 +43,6 @@ Resources:
         - Effect: Allow
           Principal:
             Service:
-              AWS: 'arn:aws:iam:::268819417241:root'
+              AWS: 'arn:aws:iam::268819417241:root'
           Action: sts:AssumeRole
       
