@@ -43,8 +43,6 @@ Resources:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
-            Principal: 
-              AWS: 'arn:aws:iam::868340526592:user/gautamAdmin'
             Action: 
               - 's3:*'
             Resource:
