@@ -17,7 +17,11 @@ response = cf_client.create_stack(
         {
             'ParameterKey': 'InstanceType',
             'ParameterValue': os.environ['InstanceType']
-        }
+        },
+        {
+            'ParameterKey': 'BucketName',
+            'ParameterValue': os.environ['BucketName']
+        },
     ],
     Capabilities=['CAPABILITY_IAM','CAPABILITY_AUTO_EXPAND','CAPABILITY_NAMED_IAM']
 )
