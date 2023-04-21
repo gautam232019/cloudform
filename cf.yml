@@ -26,10 +26,12 @@ Resources:
       Statement:
         - Effect: Allow
           Principal: 
-            AWS: 'arn:aws:iam::268819417241:root'
+            AWS: 'arn:aws:iam::268819417241:user/GautamSachdevaWatchguard'
           Action:
             - 's3:GetObject'
             - 's3:PutObject'
             - 's3:PutObjectAcl'
-          Resource: !Sub 'arn:aws:s3:::${BucketName}/*'
-      
+            - 's3:ListBucket'
+          Resource: 
+            - !Sub 'arn:aws:s3:::${BucketName}/*'
+            - !Sub 'arn:aws:s3:::${BucketName}'
