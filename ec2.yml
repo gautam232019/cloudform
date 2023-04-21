@@ -11,7 +11,11 @@ Parameters:
  InstanceName:
   Description: EC2 INSTANCE NAME
   Type: String
-  
+
+ BucketName:
+  Description: S3 bucket Name
+  Type: String
+
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
@@ -34,7 +38,10 @@ Resources:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
-            Action: 'sts:AssumeRole'
-            Resource: '*'
+            Action: 
+              - 's3:GetObject'
+              - 's3:PutObject'
+              - 's3:PutObjectAcl'
+            Resource: 'arn:aws:s3:::${!Ref BucketName}'
       Users:
        - !Ref IamUser
