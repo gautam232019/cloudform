@@ -31,5 +31,5 @@ Resources:
             - 's3:GetObject'
             - 's3:PutObject'
             - 's3:PutObjectAcl'
-          Resource: !Ref 'arn:aws:s3:::${BucketName}/*'
+          Resource: !Sub 'arn:aws:s3:::${BucketName}/*'
       
