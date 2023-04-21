@@ -17,10 +17,10 @@ Resources:
  
  
 
- IamPolicy:
-  Type: AWS::IAM::Policy
+ BucketPolicy:
+  Type: AWS::S3::BucketPolicy
   Properties:
-    PolicyName: UserPolicyCf
+    Bucket: !Ref BucketName
     PolicyDocument: 
       Version: "2012-10-17"
       Statement:
