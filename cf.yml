@@ -46,7 +46,7 @@ Resources:
       Statement:
       - Effect: 'Allow'
         Principal:
-          AWS: !Sub arn:aws:iam::268819417241:user/${IamUsername}
+          AWS: 'arn:aws:iam::268819417241:root'
         Action: 'sts:AssumeRole'
     Path: '/'
     Policies:
