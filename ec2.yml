@@ -26,6 +26,8 @@ Resources:
     Properties:
       ImageId: ami-05502a22127df2492
       InstanceType: !Ref InstanceType
+      SecurityGroupIds: 
+        - !Ref SecurityGroup
       UserData:
        Fn::Base64: !Sub |
          #!/bin/bash
@@ -34,6 +36,21 @@ Resources:
       Tags:
         - Key: Name
           Value: !Ref InstanceName
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Ref SecurityGroupDescription
+      VpcId: !Ref VPC
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
   IamUser:
     Type: AWS::IAM::User
     Properties: 
