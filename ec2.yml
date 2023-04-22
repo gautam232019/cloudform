@@ -35,18 +35,16 @@ Resources:
     Properties: 
       UserName: GautamSachdevaWatchguard
 
-  IamPolicy:
-    Type: AWS::IAM::Policy
+  AssumeRolePolicy:
+    Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: UserPolicy
-      PolicyDocument: 
-        Version: "2012-10-17"
+      PolicyName: 'AssumeRolePolicy'
+      PolicyDocument:
+        Version: '2012-10-17'
         Statement:
-          - Effect: Allow
-            Action: 
-              - 's3:*'
-            Resource:
-              - !Sub 'arn:aws:s3:::${BucketName}/*'
-              - !Sub 'arn:aws:s3:::${BucketName}'
+          - Effect: 'Allow'
+            Action:
+              - 'sts:AssumeRole'
+            Resource: '*'
       Users:
-       - !Ref IamUser
+        - !Ref IamUser

@@ -17,18 +17,48 @@ Resources:
  
  
 
- BucketPolicy:
-  Type: AWS::S3::BucketPolicy
+#  BucketPolicy:
+#   Type: AWS::S3::BucketPolicy
+#   Properties:
+#     Bucket: !Ref BucketName
+#     PolicyDocument: 
+#       Version: "2012-10-17"
+#       Statement:
+#         - Effect: Allow
+#           Principal: 
+#             AWS: 'arn:aws:iam::268819417241:user/GautamSachdevaWatchguard'
+#           Action:
+#             - 's3:*'
+#           Resource: 
+#             - !Sub 'arn:aws:s3:::${BucketName}/*'
+#             - !Sub 'arn:aws:s3:::${BucketName}'
+
+ CrossAccountRole:
+  Type: 'AWS::IAM::Role'
   Properties:
-    Bucket: !Ref BucketName
-    PolicyDocument: 
-      Version: "2012-10-17"
+    AssumeRolePolicyDocument:
+      Version: '2012-10-17'
       Statement:
-        - Effect: Allow
-          Principal: 
-            AWS: 'arn:aws:iam::268819417241:user/GautamSachdevaWatchguard'
+      - Effect: 'Allow'
+        Principal:
+          AWS: arn:aws:iam::268819417241:root
+        Action: 'sts:AssumeRole'
+    Path: '/'
+    Policies:
+    - PolicyName: 'S3-ReadOnly'
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: 'Allow'
           Action:
-            - 's3:*'
-          Resource: 
-            - !Sub 'arn:aws:s3:::${BucketName}/*'
-            - !Sub 'arn:aws:s3:::${BucketName}'
+          - 's3:Get*'
+          - 's3:List*'
+          Resource: '*'
+
+
+
+
+
+
+
+
