@@ -22,6 +22,10 @@ response = cf_client.create_stack(
             'ParameterKey': 'BucketName',
             'ParameterValue': os.environ['BucketName']
         },
+        {
+            'ParameterKey': 'IamUsername',
+            'ParameterValue': os.environ['IamUsername']
+        }
     ],
     Capabilities=['CAPABILITY_IAM','CAPABILITY_AUTO_EXPAND','CAPABILITY_NAMED_IAM']
 )

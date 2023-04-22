@@ -7,6 +7,10 @@ Parameters:
   Description: S3 Bucket Name
   Type: String
 
+ IamUsername:
+  Description: Enter iam username
+  Type: String
+
 
 Resources:
  S3Bucket:
@@ -36,16 +40,17 @@ Resources:
  CrossAccountRole:
   Type: 'AWS::IAM::Role'
   Properties:
+    RoleName: 'S3_Role'
     AssumeRolePolicyDocument:
       Version: '2012-10-17'
       Statement:
       - Effect: 'Allow'
         Principal:
-          AWS: arn:aws:iam::268819417241:root
+          AWS: !Sub arn:aws:iam::268819417241:user/${IamUsername}
         Action: 'sts:AssumeRole'
     Path: '/'
     Policies:
-    - PolicyName: 'S3-ReadOnly'
+    - PolicyName: 'S3-ReadAndPut'
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -53,6 +58,8 @@ Resources:
           Action:
           - 's3:Get*'
           - 's3:List*'
+          - 's3:PutObject'
+          - 's3:PutObjectAcl'
           Resource: '*'
 
 

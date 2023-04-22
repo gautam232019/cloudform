@@ -15,6 +15,10 @@ Parameters:
  BucketName:
   Description: S3 bucket Name
   Type: String
+ 
+ IamUsername:
+  Description: Enter iam username
+  Type: String
 
 Resources:
   MyInstance:
@@ -33,7 +37,7 @@ Resources:
   IamUser:
     Type: AWS::IAM::User
     Properties: 
-      UserName: GautamSachdevaWatchguard
+      UserName: !Ref IamUsername
 
   AssumeRolePolicy:
     Type: 'AWS::IAM::Policy'
