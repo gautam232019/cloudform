@@ -76,7 +76,7 @@ Resources:
   CrossAccountRole:
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: 'S3_Role'
+      RoleName: 'EC2_Role'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
