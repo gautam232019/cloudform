@@ -20,6 +20,10 @@ Parameters:
   Description: Enter iam username
   Type: String
 
+ SecurityGroupDescription:
+  Description: Enter sg description
+  Type: String
+
 Resources:
   MyInstance:
     Type: AWS::EC2::Instance
@@ -40,6 +44,7 @@ Resources:
   SecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
+      GroupDescription: !Ref SecurityGroupDescription
       SecurityGroupIngress: 
         - IpProtocol: tcp
           FromPort: 80

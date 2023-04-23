@@ -25,6 +25,10 @@ response = cf_client.create_stack(
         {
             'ParameterKey': 'IamUsername',
             'ParameterValue': os.environ['IamUsername']
+        },
+        {
+            'ParameterKey': 'SecurityGroupDescription',
+            'ParameterValue': os.environ['SecurityGroupDescription']
         }
     ],
     Capabilities=['CAPABILITY_IAM','CAPABILITY_AUTO_EXPAND','CAPABILITY_NAMED_IAM']
