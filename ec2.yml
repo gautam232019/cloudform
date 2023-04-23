@@ -72,3 +72,25 @@ Resources:
             Resource: '*'
       Users:
         - !Ref IamUser
+
+  CrossAccountRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'S3_Role'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: 'Allow'
+          Principal:
+            AWS: 'arn:aws:iam::868340526592:root'
+          Action: 'sts:AssumeRole'
+      Path: '/'
+      Policies:
+      - PolicyName: 'EC2-Read'
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: 'Allow'
+            Action:
+            - "ec2:DescribeInstances"
+            Resource: '*'

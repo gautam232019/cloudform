@@ -37,6 +37,25 @@ Resources:
 #             - !Sub 'arn:aws:s3:::${BucketName}/*'
 #             - !Sub 'arn:aws:s3:::${BucketName}'
 
+ IamUser:
+  Type: AWS::IAM::User
+  Properties: 
+    UserName: !Ref IamUsername
+
+ AssumeRolePolicy:
+  Type: 'AWS::IAM::Policy'
+  Properties:
+    PolicyName: 'AssumeRolePolicy'
+    PolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: 'Allow'
+          Action:
+            - 'sts:AssumeRole'
+          Resource: '*'
+    Users:
+      - !Ref IamUser
+
  CrossAccountRole:
   Type: 'AWS::IAM::Role'
   Properties:
